@@ -1,19 +1,12 @@
-# app.py (simplified example)
-
 from flask import Flask, jsonify
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://username:password@localhost/dbname'
-db = SQLAlchemy(app)
 
-# Define models using db.Model...
-
-@app.route('/api/dashboard', methods=['GET'])
-def get_dashboard_data():
-    # Query your database
-    # data = ...
-    return jsonify(data)
+@app.route('/next_screen', methods=['GET'])
+def next_screen():
+    # Logic to determine next screen
+    # This could be based on user data, time of day, etc.
+    return jsonify({"screen": "Details"})
 
 if __name__ == '__main__':
     app.run(debug=True)
