@@ -1,7 +1,7 @@
 -- Inserting data into the Users table
-INSERT INTO Users (FirstName, LastName, Email) VALUES
+INSERT INTO Users (First_Name, Last_Name, Email) VALUES
 ('John', 'Doe', 'john.doe@example.com'),
-('Jane', 'Doe', 'jane.doe@example.com');
+('Kody', 'Takada', 'ktakada@umich.edu');
 
 -- Inserting data into the Medications table
 INSERT INTO Medications (MedicationName, MedicationType) VALUES
@@ -16,14 +16,14 @@ INSERT INTO Symptoms (SymptomName, Descriptions) VALUES
 -- Assuming you have Users with UserID 1 and 2, and Medications with MedID 1 and 2
 -- Inserting data into the UserMeds table linking Users to Medications
 INSERT INTO UserMeds (UserID, MedID, DateTaken, NumberOfTimesTaken, Notes) VALUES
-(1, 1, CURDATE(), 3, 'Taken after meals'),
-(2, 2, CURDATE(), 2, 'Taken with water');
+(1, 1, DATE('now'), 3, 'Taken after meals'),
+(2, 2, DATE('now'), 2, 'Taken with water');
 
 -- Assuming Symptoms with SymptomID 1 and 2
 -- Inserting data into the UserSymptoms table linking Users to Symptoms
 INSERT INTO UserSymptoms (UserID, SymptomID, StartTime, EndTime, Notes) VALUES
-(1, 1, NOW(), NULL, 'Mild headache started this morning'),
-(2, 2, NOW(), NULL, 'Persistent cough for the last 3 days');
+(1, 1, TIME('now'), NULL, 'Mild headache started this morning'),
+(2, 2, TIME('now'), NULL, 'Persistent cough for the last 3 days');
 
 -- Assuming UserSymptoms with UserSymptomID 1 and 2
 -- Inserting data into the PainDescriptors table

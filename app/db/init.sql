@@ -1,5 +1,4 @@
-CREATE DATABASE IF NOT EXISTS healthApp;
-USE healthApp;
+-- CREATE DATABASE IF NOT EXISTS healthApp;
 
 
 -- Users Table
