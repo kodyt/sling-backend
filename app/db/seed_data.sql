@@ -1,38 +1,41 @@
--- Inserting data into the Users table
-INSERT INTO Users (First_Name, Last_Name, Email)
-VALUES ('John', 'Doe', 'john.doe@example.com');
-INSERT INTO Users (First_Name, Last_Name, Email)
-VALUES ('Kody', 'Takada', 'ktakada@umich.edu');
+INSERT INTO Users (First_Name, Last_Name, Email, ProfilePic) VALUES 
+('John', 'Doe', 'johndoe@example.com', 'default.jpg'),
+('Jane', 'Smith', 'janesmith@example.com', 'default.jpg');
 
--- Inserting data into the Medications table
-INSERT INTO Medications (MedicationName, MedicationType) 
-VALUES ('Amoxicillin', 'Antibiotic');
-INSERT INTO Medications (MedicationName, MedicationType) 
-VALUES ('Ibuprofen', 'Anti-inflammatory');
+INSERT INTO Medications (MedicationName, MedicationType) VALUES 
+('Ibuprofen', 'NSAID'),
+('Paracetamol', 'Analgesic');
 
--- Inserting data into the Symptoms table
-INSERT INTO Symptoms (SymptomName, Descriptions) 
-VALUES ('Headache', 'A pain in the head with the pain being above the eyes or the ears, behind the head (occipital), or in the back of the upper neck.');
-INSERT INTO Symptoms (SymptomName, Descriptions) 
-VALUES ('Cough', 'A sudden and often repetitively occurring reflex which helps to clear the large breathing passages from fluids, irritants, foreign particles and microbes.');
+INSERT INTO UserMeds (UserID, MedID) VALUES 
+(1, 1),
+(2, 2);
 
--- Assuming you have Users with UserID 1 and 2, and Medications with MedID 1 and 2
--- Inserting data into the UserMeds table linking Users to Medications
-INSERT INTO UserMeds (UserID, MedID, DateTaken, NumberOfTimesTaken, Notes) 
-VALUES (1, 1, DATE('now'), 3, 'Taken after meals');
-INSERT INTO UserMeds (UserID, MedID, DateTaken, NumberOfTimesTaken, Notes) 
-VALUES (2, 2, DATE('now'), 2, 'Taken with water');
+INSERT INTO MedLog (UserMedID, DateTaken, Dosage, Notes) VALUES 
+(1, '2024-02-14', 400, 'No side effects'),
+(2, '2024-02-14', 500, 'Felt better after an hour');
 
--- Assuming Symptoms with SymptomID 1 and 2
--- Inserting data into the UserSymptoms table linking Users to Symptoms
-INSERT INTO UserSymptoms (UserID, SymptomID, StartTime, EndTime, Notes) 
-VALUES (1, 1, TIME('now'), NULL, 'Mild headache started this morning');
-INSERT INTO UserSymptoms (UserID, SymptomID, StartTime, EndTime, Notes) 
-VALUES (2, 2, TIME('now'), NULL, 'Persistent cough for the last 3 days');
+INSERT INTO Symptoms (SymptomName, Descriptions, Category) VALUES 
+('Cough', 'A reflex action to clear your airways', 1),
+('Headache', 'Pain in the head or upper neck', 2);
 
--- Assuming UserSymptoms with UserSymptomID 1 and 2
--- Inserting data into the PainDescriptors table
-INSERT INTO PainDescriptors (UserSymptomID, Severity, Location, TypeOfPain)
-VALUES (1, 'Moderate', 'Forehead', 'Throbbing');
-INSERT INTO PainDescriptors (UserSymptomID, Severity, Location, TypeOfPain)
-VALUES (2, 'Mild', 'Throat', 'Scratchy');
+INSERT INTO UserSymptoms (UserID, SymptomID) VALUES 
+(1, 1),
+(2, 2);
+
+INSERT INTO NonPainLog (UserSymptomID, Severity, Descriptions, StartTime, EndTime, Notes) VALUES 
+(1, 3, 'Dry cough', '2024-02-14 08:00:00', '2024-02-14 12:00:00', 'Persisted for several hours'),
+(2, 2, 'Mild headache', '2024-02-14 09:00:00', '2024-02-14 15:00:00', 'Relieved after taking medication'),
+(1, 2, 'Persistent cough', '2024-02-15 09:00:00', '2024-02-15 11:00:00', 'Coughing more at night'),
+(1, 4, 'Sneezing', '2024-02-16 10:00:00', '2024-02-16 10:30:00', 'Allergic reaction'),
+(2, 1, 'Nausea', '2024-02-15 13:00:00', '2024-02-15 14:00:00', 'Felt sick after eating'),
+(2, 3, 'Fatigue', '2024-02-17 08:00:00', '2024-02-17 20:00:00', 'Felt tired throughout the day');
+
+
+INSERT INTO PainLog (UserSymptomID, Severity, MovedLocation, TypeOfPain, StartTime, EndTime) VALUES 
+(1, 5, 'No', 'Sharp', '2024-02-14 10:00:00', '2024-02-14 11:00:00'),
+(2, 4, 'Yes', 'Dull', '2024-02-14 11:30:00', '2024-02-14 16:00:00'),
+(1, 6, 'Yes', 'Throbbing', '2024-02-15 12:00:00', '2024-02-15 14:00:00'),
+(1, 7, 'No', 'Piercing', '2024-02-16 15:00:00', '2024-02-16 15:30:00'),
+(2, 5, 'Yes', 'Aching', '2024-02-15 16:00:00', '2024-02-15 18:00:00'),
+(2, 2, 'No', 'Stabbing', '2024-02-17 10:00:00', '2024-02-17 11:00:00');
+

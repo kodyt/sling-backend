@@ -1,7 +1,10 @@
 -- DO THE DROP TABLE STUFF
-DROP TABLE PainDescriptors;
+
+DROP TABLE PainLog;
+DROP TABLE NonPainLog;
 DROP TABLE UserSymptoms;
 DROP TABLE Symptoms;
+DROP TABLE MedLog;
 DROP TABLE UserMeds;
 DROP TABLE Medications;
 DROP TABLE Users;
