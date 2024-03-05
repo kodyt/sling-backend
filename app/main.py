@@ -39,5 +39,8 @@ def get_user_symptoms(user_id):
     ]
     return jsonify(results)
 
+# TODO: Work on the data visualization
+# based on the seed data we should be able to build graphs or at least return data?
+
 if __name__ == '__main__':
     app.run(debug=True)
